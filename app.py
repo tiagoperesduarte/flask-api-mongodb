@@ -1,13 +1,20 @@
 from flask import Flask
+from flask_mongoengine import MongoEngine
 from flask_restful import Api
+
+db = MongoEngine()
 
 
 def create_app():
     app = Flask(__name__)
+    app.config.from_object('config')
 
-    from resources.task_resource import HelloWorld
+    db.init_app(app)
+
+    from resources.task_resource import TaskResource, TaskListResource
 
     api = Api(app)
-    api.add_resource(HelloWorld, '/')
+    api.add_resource(TaskResource, '/tasks/<string:id>')
+    api.add_resource(TaskListResource, '/tasks')
 
     return app
