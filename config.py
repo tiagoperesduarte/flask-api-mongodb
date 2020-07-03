@@ -1,5 +1,5 @@
 # MongoEngine
-MONGODB_HOST = 'localhost'
+MONGODB_HOST = 'db'
 MONGODB_PORT = 27017
 MONGODB_USERNAME = 'root'
 MONGODB_PASSWORD = 'myroot'
